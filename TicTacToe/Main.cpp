@@ -17,7 +17,7 @@ void input();
 void togglePlayer();
 bool restartGame(bool isWin);
 void setToMatrix(int x, int y, char value);
-void inputFails();
+void inputFails(bool isExistData);
 void checkWiner();
 
 int main() {
@@ -111,9 +111,12 @@ void input() {
 	int selectRow = select / 10 - 1;
 	int selectColumn = select % 10 - 1;
 
-	if (matrix[selectRow][selectColumn] != 'x' && matrix[selectRow][selectColumn] != 'o')
-		setToMatrix(selectRow, selectColumn, player);
-	else inputFails();
+	if (selectRow <= MAX_ROW_COLUMN && selectColumn <= MAX_ROW_COLUMN) {
+		if (matrix[selectRow][selectColumn] != 'x' && matrix[selectRow][selectColumn] != 'o')
+			setToMatrix(selectRow, selectColumn, player);
+		else inputFails(true);
+	}
+	else inputFails(false);
 
 	cout << endl;
 	system("cls");
@@ -139,10 +142,11 @@ void setToMatrix(int x, int y, char value) {
 /**
 * cout error if player choose data Exist
 */
-void inputFails() {
+void inputFails(bool isExistData) {
 	system("cls");
 	drawMatrix();
-	cout << "Your select is EXIT, Please select other place!" << endl;
+	isExistData ? cout << "Your select is EXIT, Please select other place!" << endl :
+		cout << "* This number is large" << endl;
 	input();
 }
 
