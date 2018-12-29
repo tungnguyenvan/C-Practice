@@ -19,6 +19,7 @@ bool restartGame(bool isWin);
 void setToMatrix(int x, int y, char value);
 void inputFails(bool isExistData);
 void checkWiner();
+void setPlayerWin();
 
 int main() {
 	cout << "Wellcome to tic-tac-toe game!, play whith your way!" << endl;
@@ -186,28 +187,37 @@ void checkWiner() {
 	//check theo hang
 	for (int i = 0; i < MAX_ROW_COLUMN; i++)
 	{
-		if (matrix[i][0] == player && matrix[i][1] == player && matrix[i][2] == player) {
-			player == 'x' ? playerWin = 1 : playerWin = 2;
-			return;
+		for (int j = 0; j < MAX_ROW_COLUMN; j++) {
+			if (matrix[i][j] == player && matrix[i][j + 1] == player && matrix[i][j + 2] == player) {
+				setPlayerWin();
+				return;
+			}
 		}
 	}
 
 	//check theo cot
 	for (int i = 0; i < MAX_ROW_COLUMN; i++) {
-		if (matrix[0][i] == player && matrix[1][i] == player && matrix[2][i] == player) {
-			player == 'x' ? playerWin = 1 : playerWin = 2;
-			return;
+		for (int j = 0; j < MAX_ROW_COLUMN; j++) {
+			if (matrix[j][i] == player && matrix[j + 1][i] == player && matrix[j + 2][i] == player) {
+				setPlayerWin();
+				return;
+			}
 		}
 	}
 
 	//check chieu cheo
-	if (matrix[1][1] == player) {
-		if ((matrix[0][0] == player && matrix[2][2] == player) || (matrix[2][0] == player && matrix[0][2] == player)) {
-			player == 'x' ? playerWin = 1 : playerWin = 2;
-			return;
+	for (int i = 0; i < MAX_ROW_COLUMN; i++) {
+		if (matrix[i + 1][i + 1] == player) {
+			if ((matrix[i][i] == player && matrix[i + 2][i + 2] == player) || (matrix[i][i + 2] == player && matrix[i + 2][i] == player)) {
+				setPlayerWin();
+			}
 		}
 	}
 
 
 	togglePlayer();
+}
+
+void setPlayerWin() {
+	player == 'x' ? playerWin = 1 : playerWin = 2;
 }
