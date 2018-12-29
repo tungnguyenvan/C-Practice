@@ -11,6 +11,7 @@ char nameA[10] = "";
 char nameB[10] = "";
 
 void drawMatrix();
+void addName();
 
 int main() {
 	cout << "Wellcome to tic-tac-toe game!, play whith your way!" << endl;
@@ -22,6 +23,7 @@ int main() {
 
 	if (select == 1)
 	{
+		addName();
 		drawMatrix();
 	}
 
@@ -29,6 +31,10 @@ int main() {
 	return 0;
 }
 
+
+/**
+* Draw game play to console screen
+*/
 void drawMatrix() {
 	cout << "\t*** TIC TAC TOE ***" << endl << "\tx: " << nameA << " --- o: "
 		<< nameB << endl << endl << "\t    1   2   3" << endl << "\t  _____________" << endl;
@@ -47,4 +53,17 @@ void drawMatrix() {
 			temp++;
 		}
 	}
+}
+
+/**
+* Add name for 2 player
+*/
+void addName() {
+	cout << "Enter Player 1 name: ";
+	cin >> nameA;
+	cout << "\nEnter Player 2 name: ";
+	cin >> nameB;
+
+	cout << "Do you start? : ";
+	system("pause");
 }
