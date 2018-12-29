@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 
 using namespace std;
 
@@ -12,6 +12,12 @@ char nameB[10] = "";
 
 void drawMatrix();
 void addName();
+void runGame();
+void input();
+void togglePlayer();
+bool restartGame(bool isWin);
+void setToMatrix(int x, int y, char value);
+void inputFails();
 
 int main() {
 	cout << "Wellcome to tic-tac-toe game!, play whith your way!" << endl;
@@ -24,7 +30,7 @@ int main() {
 	if (select == 1)
 	{
 		addName();
-		drawMatrix();
+		runGame();
 	}
 
 	system("pause");
@@ -66,4 +72,108 @@ void addName() {
 
 	cout << "Do you start? : ";
 	system("pause");
+}
+
+/**
+* Run for game
+*/
+void runGame() {
+	system("cls");
+	drawMatrix();
+	//cho người dùng tích nhiều lần
+	while (ticked < 9)
+	{
+		input();
+		if (playerWin > 0) {
+			if (restartGame(true)) continue;
+			else  break;
+		}
+	}
+	if (ticked >= 9 && playerWin == 0) {
+		if (restartGame(false)) {
+			runGame();
+			return;
+		}
+	}
+}
+
+/**
+* Input number -> player ticked
+*/
+void input() {
+	int select;
+	cout << endl << endl;
+	(player == 'x') ? cout << nameA : cout << nameB;
+	cout << "\t" << player << ": type your number (row/column): ";
+	cin >> select;
+
+	int selectRow = select / 10 - 1;
+	int selectColumn = select % 10 - 1;
+
+	if (matrix[selectRow][selectColumn] != 'x' && matrix[selectRow][selectColumn] != 'o')
+		setToMatrix(selectRow, selectColumn, player);
+	else inputFails();
+
+	cout << endl;
+	system("cls");
+	drawMatrix();
+}
+
+/**
+* switch player "x" to "o" And "o" to "x"
+*/
+void togglePlayer() {
+	(player == 'x') ? player = 'o' : player = 'x';
+}
+
+/**
+* set data "x" or "o" to matrix
+*/
+void setToMatrix(int x, int y, char value) {
+	matrix[x][y] = value;
+	ticked++;
+}
+
+/**
+* cout error if player choose data Exist
+*/
+void inputFails() {
+	system("cls");
+	drawMatrix();
+	cout << "Your select is EXIT, Please select other place!" << endl;
+	input();
+}
+
+
+/**
+* request player restart game
+*/
+bool restartGame(bool isWin) {
+	char restart;
+	if (isWin) {
+		(playerWin == 1) ? cout << nameA : cout << nameB;
+		cout << "\t----> WIN ..." << endl << endl;
+	}
+	else cout << "not defeated" << endl << endl;
+	cout << "Do you want restart? (y/n)";
+	cin >> restart;
+
+	if (restart == 'y')
+	{
+		system("cls");
+		int index = 1;
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				matrix[i][j] = ' ';
+			}
+		}
+		ticked = 0;
+		playerWin = 0;
+		drawMatrix();
+		return true;
+	}
+	else {
+		cout << "Thanks for use!" << endl;
+		return false;
+	}
 }
