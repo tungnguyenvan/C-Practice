@@ -75,7 +75,7 @@ void getInforStudent() {
 	float score;
 
 	cout << "ID: "; cin >> id;
-	cout << "Name: "; getline(cin, name);
+	cout << "Name: "; getline(cin, name); fflush;
 	cout << "score: "; cin >> score;
 
 	if (checkIdExit(id, students)) {
@@ -84,14 +84,25 @@ void getInforStudent() {
 		student._name = name;
 		student._score = score;
 
-		insertStudent(student, &students);
+		if (insertStudent(student, &students))
+			cout << "Insert Student success!" << endl;
+		else cout << "Insert Student Failed!" << endl;
 	}
 }
 
 bool checkIdExit(int id, vector<Student> students) {
 	for (int i = 0; i < students.size(); i++) {
-		if (students.at(i)._id == id){
+		if (students.at(i)._id == id)
 			return false;
 	}
 	return true;
+}
+
+bool insertStudent(Student student, vector<Student> *students) {
+	int oldSize = students->size();
+	students->push_back(student);
+
+	if (oldSize < students->size())
+		return true;
+	return false;
 }
