@@ -1,8 +1,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
+#include <string>
 
 using namespace std;
+const string FILE_PATH = "Student_manager.txt";
 
 struct Student
 {
@@ -58,7 +61,9 @@ void question() {
 		showStudents(students);
 		break;
 	case 3:
-		//saveStudentsToFile();
+		if (saveStudentsToFile(students)) cout << "Save file success!" << endl;
+		else cout << "Save file Failed, Try it!" << endl;
+		system("pause");
 		break;
 	case 4:
 		//loadStudentsFromFile();
@@ -78,6 +83,7 @@ void question() {
 void getInforStudent() {
 	system("cls");
 	cout << "----- INSERT STUDENT -----" << endl;
+	cout << "BIGGEST ID : " << students.size() << endl;
 	int id;
 	string name;
 	float score;
@@ -150,4 +156,18 @@ void showStudents(vector<Student> students) {
 	}
 	cout << endl << endl;
 	system("pause");
+}
+
+bool saveStudentsToFile(vector<Student> students) {
+	ofstream insertToFile(FILE_PATH, std::ios::out);
+	for (int i = 0; i < students.size(); i++) {
+		insertToFile << students.at(i)._id << endl;
+		insertToFile << students.at(i)._name << endl;
+		insertToFile << students.at(i)._score << endl;
+		if (insertToFile.fail())
+			return false;
+	}
+
+	insertToFile.close();
+	return true;
 }

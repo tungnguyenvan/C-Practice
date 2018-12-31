@@ -1,0 +1,9 @@
+1
+Nguyen van A
+1.2
+2
+Nguyen van b
+10
+3
+Nguyen van c
+3.4
