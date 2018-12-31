@@ -71,6 +71,10 @@ void question() {
 	}
 }
 
+/**
+* Get id, name, score of student in cosole,
+* if id not exist then insert to list studen
+*/
 void getInforStudent() {
 	system("cls");
 	cout << "----- INSERT STUDENT -----" << endl;
@@ -102,6 +106,9 @@ void getInforStudent() {
 	}
 }
 
+/**
+* Check id not exist
+*/
 bool checkIdExit(int id, vector<Student> students) {
 	for (int i = 0; i < students.size(); i++) {
 		if (students.at(i)._id == id)
@@ -110,6 +117,9 @@ bool checkIdExit(int id, vector<Student> students) {
 	return true;
 }
 
+/**
+* Insert Studen to list student
+*/
 bool insertStudent(Student student, vector<Student> *students) {
 	int oldSize = students->size();
 	students->push_back(student);
@@ -119,6 +129,9 @@ bool insertStudent(Student student, vector<Student> *students) {
 	return false;
 }
 
+/**
+* Question user do you want continue?
+*/
 void continueInsertStudent() {
 	cout << "You want continue insert student? (y/n)";
 	
