@@ -17,6 +17,7 @@ bool wantExit = false;
 void question();
 void showStudents(vector<Student> students);
 void getInforStudent();
+void continueInsertStudent();
 bool checkIdExit(int id, vector<Student> students);
 bool insertStudent(Student student, vector<Student> *students);
 bool saveStudentsToFile(vector<Student> students);
@@ -33,6 +34,7 @@ int main() {
 }
 
 void question() {
+	system("cls");
 	cout << "------------ WELLCOME -----------" << endl << endl;
 
 	cout << "1. Input" << endl;
@@ -70,6 +72,8 @@ void question() {
 }
 
 void getInforStudent() {
+	system("cls");
+	cout << "----- INSERT STUDENT -----" << endl;
 	int id;
 	string name;
 	float score;
@@ -85,13 +89,15 @@ void getInforStudent() {
 		student._name = name;
 		student._score = score;
 
-		if (insertStudent(student, &students))
+		if (insertStudent(student, &students)) {
 			cout << "Insert Student success!" << endl;
+			continueInsertStudent();
+		}
 		else cout << "Insert Student Failed!" << endl;
 	}
 	else {
 		cout << "This ID is already Exist, Please try input." << endl;
-		getInforStudent();
+		continueInsertStudent();
 		return;
 	}
 }
@@ -111,6 +117,14 @@ bool insertStudent(Student student, vector<Student> *students) {
 	if (oldSize < students->size())
 		return true;
 	return false;
+}
+
+void continueInsertStudent() {
+	cout << "You want continue insert student? (y/n)";
+	
+	char select;
+	cin >> select;
+	if (select == 'y') getInforStudent();
 }
 
 void showStudents(vector<Student> students) {
