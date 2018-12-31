@@ -128,10 +128,13 @@ void continueInsertStudent() {
 }
 
 void showStudents(vector<Student> students) {
+	system("cls");
 	cout << "ID\t\tFull Name\t\tScore" << endl;
 	for (int i = 0; i < students.size(); i++) {
 		cout << students.at(i)._id << "\t\t";
 		cout << students.at(i)._name << "\t\t";
 		cout << students.at(i)._score << endl;
 	}
+	cout << endl << endl;
+	system("pause");
 }
