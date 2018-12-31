@@ -74,7 +74,7 @@ void getInforStudent() {
 	string name;
 	float score;
 
-	cout << "ID: "; cin >> id; fflush;
+	cout << "ID: "; cin >> id; cin.get();
 
 	if (checkIdExit(id, students)) {
 		cout << "Name: "; getline(cin, name);
@@ -90,7 +90,7 @@ void getInforStudent() {
 		else cout << "Insert Student Failed!" << endl;
 	}
 	else {
-		cout << "This ID is anready Exist, Please try input." << endl;
+		cout << "This ID is already Exist, Please try input." << endl;
 		getInforStudent();
 		return;
 	}
@@ -114,7 +114,7 @@ bool insertStudent(Student student, vector<Student> *students) {
 }
 
 void showStudents(vector<Student> students) {
-	cout << "ID\t\tFull Name\tScore" << endl;
+	cout << "ID\t\tFull Name\t\tScore" << endl;
 	for (int i = 0; i < students.size(); i++) {
 		cout << students.at(i)._id << "\t\t";
 		cout << students.at(i)._name << "\t\t";
