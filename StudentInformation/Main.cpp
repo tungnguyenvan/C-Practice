@@ -15,7 +15,7 @@ vector<Student> students;
 bool wantExit = false;
 
 void question();
-void showStudents(vector<Student> *students);
+void showStudents(vector<Student> students);
 void getInforStudent();
 bool checkIdExit(int id, vector<Student> students);
 bool insertStudent(Student student, vector<Student> *students);
@@ -49,11 +49,11 @@ void question() {
 
 	switch (select)
 	{
-	case 1 :
+	case 1:
 		getInforStudent();
 		break;
 	case 2:
-		//showStudents();
+		showStudents(students);
 		break;
 	case 3:
 		//saveStudentsToFile();
@@ -74,11 +74,12 @@ void getInforStudent() {
 	string name;
 	float score;
 
-	cout << "ID: "; cin >> id;
-	cout << "Name: "; getline(cin, name); fflush;
-	cout << "score: "; cin >> score;
+	cout << "ID: "; cin >> id; fflush;
 
 	if (checkIdExit(id, students)) {
+		cout << "Name: "; getline(cin, name);
+		cout << "score: "; cin >> score;
+
 		Student  student;
 		student._id = id;
 		student._name = name;
@@ -87,6 +88,11 @@ void getInforStudent() {
 		if (insertStudent(student, &students))
 			cout << "Insert Student success!" << endl;
 		else cout << "Insert Student Failed!" << endl;
+	}
+	else {
+		cout << "This ID is anready Exist, Please try input." << endl;
+		getInforStudent();
+		return;
 	}
 }
 
@@ -105,4 +111,13 @@ bool insertStudent(Student student, vector<Student> *students) {
 	if (oldSize < students->size())
 		return true;
 	return false;
+}
+
+void showStudents(vector<Student> students) {
+	cout << "ID\t\tFull Name\tScore" << endl;
+	for (int i = 0; i < students.size(); i++) {
+		cout << students.at(i)._id << "\t\t";
+		cout << students.at(i)._name << "\t\t";
+		cout << students.at(i)._score << endl;
+	}
 }
