@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include <string>
 
 using namespace std;
 const string FILE_PATH = "Student_manager.txt";
@@ -24,7 +23,7 @@ void continueInsertStudent();
 bool checkIdExit(int id, vector<Student> students);
 bool insertStudent(Student student, vector<Student> *students);
 bool saveStudentsToFile(vector<Student> students);
-bool loadStudentsFromFile(vector<Student> *Students);
+bool loadStudentsFromFile(vector<Student> *students);
 
 int main() {
 	while (!wantExit)
@@ -66,7 +65,9 @@ void question() {
 		system("pause");
 		break;
 	case 4:
-		//loadStudentsFromFile();
+		if (loadStudentsFromFile(&students)) cout << "Load file to List success!" << endl;
+		else cout << "Load file to List Failed. Try it!" << endl;
+		system("pause");
 		break;
 	case 0:
 		wantExit = true;
@@ -170,4 +171,41 @@ bool saveStudentsToFile(vector<Student> students) {
 
 	insertToFile.close();
 	return true;
+}
+
+bool loadStudentsFromFile(vector<Student> *students) {
+	int oldSize = students->size();
+	ifstream fileToList(FILE_PATH);
+	if (fileToList.fail()) return false;
+	int numLine = 0;
+	Student student;
+	string line;
+	int id;
+	float score;
+	while (getline(fileToList, line))
+	{ 
+		numLine++;
+		switch (numLine)
+		{
+		case 1:
+			id = stoi(line);
+			student._id = id;
+			break;
+		case 2:
+			student._name = line;
+			break;
+		case 3:
+			score = stof(line);
+			student._score = score;
+			numLine = 0;
+			students->push_back(student);
+			break;
+		default:
+			break;
+		}
+	}
+
+	fileToList.close();
+	if (oldSize < students->size()) return true;
+	else return false;
 }

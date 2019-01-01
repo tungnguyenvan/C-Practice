@@ -7,3 +7,6 @@ Nguyen van b
 3
 Nguyen van c
 3.4
+4
+Nguyen van b
+5.4
