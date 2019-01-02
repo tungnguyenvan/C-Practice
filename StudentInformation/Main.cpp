@@ -121,6 +121,12 @@ void getInforStudent() {
 		}
 		cout << "Name: "; getline(cin, name);
 		cout << "score: "; cin >> score;
+		if (score < 0 && score > 10)
+		{
+			cout << "You need input score form 0 to 10";
+			system("pause");
+			return;
+		}
 
 		Student  student;
 		student._id = id;
