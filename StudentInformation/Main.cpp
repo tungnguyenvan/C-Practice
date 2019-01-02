@@ -216,6 +216,7 @@ bool saveStudentsToFile(vector<Student> students) {
 * Load stdent from file to List
 */
 int loadStudentsFromFile(vector<Student> *students) {
+	students->clear();
 	int oldSize = students->size();
 	ifstream fileToList(FILE_PATH);
 	if (fileToList.fail()) return LOADFAIL;
