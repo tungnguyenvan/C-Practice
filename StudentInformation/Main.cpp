@@ -113,6 +113,12 @@ void getInforStudent() {
 	cout << "ID: "; cin >> id; cin.get();
 
 	if (checkIdExit(id, students)) {
+		if (id < 0) {
+			cout << "You need input id > 0, try it!" << endl;
+			system("pause");
+			return;
+			
+		}
 		cout << "Name: "; getline(cin, name);
 		cout << "score: "; cin >> score;
 
