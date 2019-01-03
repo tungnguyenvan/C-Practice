@@ -1,5 +1,6 @@
 #include <iostream>
 #include "MyPoint.h"
+#include <math.h>
 
 using namespace std;
 
@@ -33,13 +34,11 @@ int MyPoint::GetY() {
 	return this->mPostY;
 }
 
-MyPoint MyPoint::Distance(MyPoint p) {
-	MyPoint point;
+float MyPoint::Distance(MyPoint p) {
+	double distanceX = pow(p.GetX() - this->GetX(), 2);
+	double distanceY = pow(p.GetY() - this->GetY(), 2);
 
-	point.mPosX = (this->mPosX + p.mPosX) / 2;
-	point.mPostY = (this->mPostY + p.mPostY) / 2;
-
-	return point;
+	return sqrt(distanceX + distanceY);
 }
 
 MyPoint::~MyPoint() {
