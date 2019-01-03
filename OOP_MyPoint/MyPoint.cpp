@@ -41,3 +41,7 @@ MyPoint MyPoint::Distance(MyPoint p) {
 
 	return point;
 }
+
+MyPoint::~MyPoint() {
+
+}

@@ -15,6 +15,7 @@ public:
 	void SetY(int y);
 	int GetY();
 	MyPoint Distance(MyPoint p);
+	~MyPoint();
 };
 
 #endif // __MYPOINT_H__
