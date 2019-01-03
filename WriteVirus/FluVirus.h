@@ -19,4 +19,3 @@ public:
 
 
 #endif // !__FLU_VIRUS_H__
-

@@ -23,5 +23,3 @@ public:
 };
 
 #endif // !__PATIENT_H__
-
-

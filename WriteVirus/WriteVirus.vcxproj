@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{898E8AA9-4D63-47D2-9BD5-6D61BEA66B00}</ProjectGuid>
+    <ProjectGuid>{52177CCD-95E2-4865-91C1-D407E5A9FCBC}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>WriteVirus</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
@@ -146,6 +146,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DengueVirus.cpp" />
+    <ClCompile Include="FluVirus.cpp" />
+    <ClCompile Include="Patient.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Virus.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DengueVirus.h" />
+    <ClInclude Include="FluVirus.h" />
+    <ClInclude Include="Patient.h" />
+    <ClInclude Include="Virus.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
