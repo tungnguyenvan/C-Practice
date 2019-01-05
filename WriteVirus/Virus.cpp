@@ -22,6 +22,10 @@ Virus::Virus(const Virus &virus) {
 	this->m_resistance = virus.m_resistance;
 }
 
+int Virus::GetResistance() {
+	return this->m_resistance;
+}
+
 void Virus::LoadADNInformation() {
 	string adn;
 	ifstream file(FILE_PATH, ios::in);

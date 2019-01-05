@@ -56,9 +56,11 @@ void Patient::InitResistance() {
 }
 
 void Patient::TakeMadicine(int medicine_resistance) {
+	int resistanceVirus = 0;
 	for each (Virus *virus in this->m_VirusList)
 	{
-		virus->ReduceResistance(medicine_resistance, this->m_VirusList);
+		virus->ReduceResistance(medicine_resistance, &this->m_VirusList);
+		resistanceVirus += virus->GetResistance();
 	}
 }
 

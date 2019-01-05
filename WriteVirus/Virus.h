@@ -15,6 +15,7 @@ public:
 	Virus(const Virus &virus);
 
 	void LoadADNInformation();
+	int GetResistance();
 	virtual void ReduceResistance(int medicine_resistance, list<Virus*> *listVirus);
 
 	virtual void DoBorn() = 0;
