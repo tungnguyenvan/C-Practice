@@ -16,8 +16,9 @@ public:
 	Patient();
 	~Patient();
 	list<Virus*> GetListVirus();
+	void InitResistance();
 	void DoStart();
-	void TakeMadicine();
+	void TakeMadicine(int medicine_resistance);
 	void ReduceResistance(int medicine_resistance);
 	void DoDie();
 	int GetState();

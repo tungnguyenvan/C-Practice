@@ -17,6 +17,10 @@ DengueVirus::~DengueVirus() {
 
 }
 
+void DengueVirus::ReduceResistance(int medicine_resistance, list<Virus*> *listVirus) {
+	cout << "Dengue virus reduce" << endl;
+}
+
 void DengueVirus::DoBorn() {
 
 }

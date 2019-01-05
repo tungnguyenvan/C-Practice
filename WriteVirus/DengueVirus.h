@@ -10,6 +10,7 @@ public:
 	DengueVirus(const DengueVirus &dengueVirus);
 	~DengueVirus();
 
+	void ReduceResistance(int medicine_resistance, list<Virus*> *listVirus) override;
 	void DoBorn() override;
 	void DoDie() override;
 	void DoClone(list<Virus*> listVirus) override;

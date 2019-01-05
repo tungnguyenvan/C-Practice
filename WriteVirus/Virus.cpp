@@ -36,7 +36,7 @@ void Virus::LoadADNInformation() {
 	this->m_dna = const_cast<char*>(adn.c_str());
 }
 
-void Virus::ReduceResistance(int medicine_resistance) {
+void Virus::ReduceResistance(int medicine_resistance, list<Virus*> *listVirus) {
 	this->m_resistance -= medicine_resistance;
 	if (this->m_resistance <= 0) delete this;
 }
