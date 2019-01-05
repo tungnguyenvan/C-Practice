@@ -2,7 +2,7 @@
 #define __DENGUE_VIRUS_H__
 #include "Virus.h"
 
-class DengueVirus : virtual Virus {
+class DengueVirus : virtual public Virus {
 private:
 	char m_protein[4];
 public:
@@ -12,7 +12,7 @@ public:
 
 	void DoBorn() override;
 	void DoDie() override;
-	void DoClone() override;
+	void DoClone(list<Virus*> listVirus) override;
 	void InitResistance() override;
 };
 

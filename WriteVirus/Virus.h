@@ -1,5 +1,8 @@
 #ifndef __VIRUS_H__
 #define __VIRUS_H__
+#include <list>
+
+using namespace std;
 
 class Virus {
 private:
@@ -15,7 +18,7 @@ public:
 	void ReduceResistance(int medicine_resistance);
 
 	virtual void DoBorn() = 0;
-	virtual void DoClone() = 0;
+	virtual void DoClone(list<Virus*> listVirus) = 0;
 	virtual void DoDie() = 0;
 	virtual void InitResistance() = 0;
 };

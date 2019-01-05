@@ -1,6 +1,6 @@
 #include <iostream>
 #include "FluVirus.h"
-#include <vector>
+#include <list>
 
 using namespace std;
 
@@ -13,10 +13,10 @@ FluVirus::~FluVirus() {
 }
 
 void FluVirus::DoBorn() {
-
+	cout << "New Virus was born!" << endl;
 }
 
-void FluVirus::DoClone() {
+void FluVirus::DoClone(list<Virus*> listVirus) {
 
 }
 

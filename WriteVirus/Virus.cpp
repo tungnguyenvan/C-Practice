@@ -18,7 +18,8 @@ Virus::~Virus() {
 }
 
 Virus::Virus(const Virus &virus) {
-
+	this->m_dna = virus.m_dna;
+	this->m_resistance = virus.m_resistance;
 }
 
 void Virus::LoadADNInformation() {

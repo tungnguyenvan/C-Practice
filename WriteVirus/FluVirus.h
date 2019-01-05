@@ -1,7 +1,7 @@
 #ifndef __FLU_VIRUS_H__
 #define __FLU_VIRUS_H__
 #include "Virus.h"
-#include <vector>
+#include <list>
 
 using namespace std;
 
@@ -15,7 +15,7 @@ public:
 
 	void DoBorn() override;
 	void DoDie() override;
-	void DoClone() override;
+	void DoClone(list<Virus*> listVirus) override;
 	void InitResistance() override;
 };
 

@@ -1,5 +1,9 @@
 #include "DengueVirus.h"
 #include <iostream>
+#include <list>
+#include "Virus.h"
+
+using namespace std;
 
 DengueVirus::DengueVirus() {
 
@@ -17,7 +21,7 @@ void DengueVirus::DoBorn() {
 
 }
 
-void DengueVirus::DoClone() {
+void DengueVirus::DoClone(list<Virus*> listVirus) {
 
 }
 

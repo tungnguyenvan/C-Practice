@@ -2,6 +2,7 @@
 #define __PATIENT_H__
 #include <list>
 #include "Virus.h"
+#include <list>
 
 using namespace std;
 
@@ -14,10 +15,10 @@ private:
 public:
 	Patient();
 	~Patient();
-
+	list<Virus*> GetListVirus();
 	void DoStart();
 	void TakeMadicine();
-	void ReduceResistance();
+	void ReduceResistance(int medicine_resistance);
 	void DoDie();
 	int GetState();
 };
