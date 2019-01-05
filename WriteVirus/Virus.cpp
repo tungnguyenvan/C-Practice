@@ -10,7 +10,7 @@ const int MAX_LENG = 255;
 int lengthADN = 0;
 
 Virus::Virus() {
-
+	this->m_resistance = rand() % 30 + 1;
 }
 
 Virus::~Virus() {
@@ -36,5 +36,6 @@ void Virus::LoadADNInformation() {
 }
 
 void Virus::ReduceResistance(int medicine_resistance) {
-
+	this->m_resistance -= medicine_resistance;
+	if (this->m_resistance <= 0) delete this;
 }
