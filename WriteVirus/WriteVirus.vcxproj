@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{52177CCD-95E2-4865-91C1-D407E5A9FCBC}</ProjectGuid>
+    <ProjectGuid>{FA5F6EA2-5FCA-49EA-AAE1-708C4FDF0229}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>WriteVirus</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>

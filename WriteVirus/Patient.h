@@ -5,21 +5,21 @@
 
 using namespace std;
 
-class Patient
-{
+class Patient {
 private:
 	int m_resistance;
-	list<Virus> m_virusList;
+	list<Virus*> m_VirusList;
 	int m_state;
 
 public:
 	Patient();
 	~Patient();
 
-	int InitResistance();
 	void DoStart();
-	void TakeMidicine();
-	void ReduceResistance(int medicine_resistance);
+	void TakeMadicine();
+	void ReduceResistance();
+	void DoDie();
+	int GetState();
 };
 
-#endif // !__PATIENT_H__
+#endif

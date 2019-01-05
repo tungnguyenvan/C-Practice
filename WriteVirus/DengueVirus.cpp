@@ -1,19 +1,30 @@
-#ifndef __DENGUE_VIRUS_H
-#define __DENGUE_VIRUS_H
-#include "Virus.h"
+#include "DengueVirus.h"
+#include <iostream>
 
-class DengueVirus : public Virus
-{
-private:
-	char m_protein[4];
-public:
-	DengueVirus();
-	~DengueVirus();
+DengueVirus::DengueVirus() {
 
-	void DoBorn() override;
-	Virus * DoClone() override;
-	void DoDie() override;
-	void InitResistance() override;
-};
+}
 
-#endif // !__DENGUE_VIRUS_H
+DengueVirus::DengueVirus(const DengueVirus &dengueVirus) {
+
+}
+
+DengueVirus::~DengueVirus() {
+
+}
+
+void DengueVirus::DoBorn() {
+
+}
+
+void DengueVirus::DoClone() {
+
+}
+
+void DengueVirus::DoDie() {
+
+}
+
+void DengueVirus::InitResistance() {
+
+}
