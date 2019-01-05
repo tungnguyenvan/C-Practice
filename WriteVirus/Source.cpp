@@ -10,6 +10,8 @@ int main() {
 	cout << "total virus: " << p.GetListVirus().size() << endl;
 	while (p.GetState() == 1)
 	{
+		system("cls");
+		cout << "Resistance: [Patient: " << p.GetResistance() << "]\t[Virus: " << p.GetTotalResistanceVirus() << "]" << endl << endl;
 		printf("Take Medicine (0 = NO, 1 = YES): ");
 		cin >> t; cout << endl;
 		if (t == '1') {

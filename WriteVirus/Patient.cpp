@@ -7,6 +7,8 @@
 
 using namespace std;
 
+int resistanceVirus = 0;
+
 enum Reistance
 {
 	MIN_RESISTANCE = 1000,
@@ -37,6 +39,14 @@ list<Virus*> Patient::GetListVirus() {
 	return this->m_VirusList;
 }
 
+int Patient::GetResistance() {
+	return this->m_resistance;
+}
+
+int Patient::GetTotalResistanceVirus() {
+	return resistanceVirus;
+}
+
 void Patient::DoStart() {
 	this->m_state = ALIVE;
 	InitResistance();
@@ -46,8 +56,8 @@ void Patient::DoStart() {
 	for (int i = 0; i < maxVirus; i++) {
 		if (rand() % 2 == 0)  virus = new FluVirus();
 		else virus = new DengueVirus();
-
 		this->m_VirusList.push_back(virus);
+		resistanceVirus += virus->GetResistance();
 	}
 }
 
@@ -56,12 +66,14 @@ void Patient::InitResistance() {
 }
 
 void Patient::TakeMadicine(int medicine_resistance) {
-	int resistanceVirus = 0;
+	resistanceVirus = 0;
 	for each (Virus *virus in this->m_VirusList)
 	{
 		virus->ReduceResistance(medicine_resistance, &this->m_VirusList);
 		resistanceVirus += virus->GetResistance();
 	}
+
+	if (resistanceVirus > this->m_resistance) this->DoDie();
 }
 
 void Patient::ReduceResistance(int medicine_resistance) {

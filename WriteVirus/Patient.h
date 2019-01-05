@@ -15,6 +15,9 @@ private:
 public:
 	Patient();
 	~Patient();
+	
+	int GetResistance();
+	int GetTotalResistanceVirus();
 	list<Virus*> GetListVirus();
 	void InitResistance();
 	void DoStart();
