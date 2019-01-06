@@ -13,7 +13,7 @@ public:
 	FluVirus();
 	~FluVirus();
 
-	void ReduceResistance(int medicine_resistance, list<Virus*> *listVirus) override;
+	bool ReduceResistance(int medicine_resistance) override;
 	void DoBorn() override;
 	void DoDie() override;
 	void DoClone(list<Virus*> listVirus) override;

@@ -7,10 +7,10 @@ using namespace std;
 int main() {
 	Patient p;
 	char t = 0;
-	cout << "total virus: " << p.GetListVirus().size() << endl;
 	while (p.GetState() == 1)
 	{
 		system("cls");
+		cout << "\n\ntotal virus: " << p.GetListVirus().size() << endl;
 		cout << "Resistance: [Patient: " << p.GetResistance() << "]\t[Virus: " << p.GetTotalResistanceVirus() << "]" << endl << endl;
 		printf("Take Medicine (0 = NO, 1 = YES): ");
 		cin >> t; cout << endl;

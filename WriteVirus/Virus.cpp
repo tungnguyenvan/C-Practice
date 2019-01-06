@@ -26,6 +26,10 @@ int Virus::GetResistance() {
 	return this->m_resistance;
 }
 
+void Virus::SetResistance(int m_resistance) {
+	this->m_resistance = m_resistance;
+}
+
 void Virus::LoadADNInformation() {
 	string adn;
 	ifstream file(FILE_PATH, ios::in);
@@ -38,9 +42,4 @@ void Virus::LoadADNInformation() {
 		file >> adn;
 	}
 	this->m_dna = const_cast<char*>(adn.c_str());
-}
-
-void Virus::ReduceResistance(int medicine_resistance, list<Virus*> *listVirus) {
-	this->m_resistance -= medicine_resistance;
-	if (this->m_resistance <= 0) delete this;
 }

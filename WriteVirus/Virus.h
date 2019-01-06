@@ -16,8 +16,9 @@ public:
 
 	void LoadADNInformation();
 	int GetResistance();
-	virtual void ReduceResistance(int medicine_resistance, list<Virus*> *listVirus);
+	void SetResistance(int m_resistance);
 
+	virtual bool ReduceResistance(int medicine_resistance) = 0;
 	virtual void DoBorn() = 0;
 	virtual void DoClone(list<Virus*> listVirus) = 0;
 	virtual void DoDie() = 0;

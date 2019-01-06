@@ -1,8 +1,12 @@
 #include <iostream>
+#include "Virus.h"
 #include "FluVirus.h"
 #include <list>
 
 using namespace std;
+
+const bool DIE = true;
+const bool ALIVE = false;
 
 FluVirus::FluVirus() {
 
@@ -12,8 +16,9 @@ FluVirus::~FluVirus() {
 
 }
 
-void FluVirus::ReduceResistance(int medicine_resistance, list<Virus*> *listVirus) {
+bool FluVirus::ReduceResistance(int medicine_resistance) {
 	cout << "Flu virus reduce" << endl;
+	return ALIVE;
 }
 
 void FluVirus::DoBorn() {

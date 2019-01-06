@@ -5,6 +5,9 @@
 
 using namespace std;
 
+const bool DIE = true;
+const bool ALIVE = false;
+
 DengueVirus::DengueVirus() {
 
 }
@@ -17,8 +20,10 @@ DengueVirus::~DengueVirus() {
 
 }
 
-void DengueVirus::ReduceResistance(int medicine_resistance, list<Virus*> *listVirus) {
-	cout << "Dengue virus reduce" << endl;
+bool DengueVirus::ReduceResistance(int medicine_resistance) {
+	if (Virus::GetResistance() > 0) Virus::SetResistance(Virus::GetResistance() - medicine_resistance);
+	if (Virus::GetResistance() < 0) return DIE;
+	return ALIVE;
 }
 
 void DengueVirus::DoBorn() {
