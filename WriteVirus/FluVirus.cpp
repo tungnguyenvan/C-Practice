@@ -28,6 +28,8 @@ bool FluVirus::ReduceResistance(int medicine_resistance) {
 
 void FluVirus::DoBorn() {
 	InitResistance();
+	if (rand() % 2 == 0) this->m_color = 0x0000ff; //is blue
+	else this->m_color = 0xff0000;
 }
 
 Virus *FluVirus::DoClone() {
