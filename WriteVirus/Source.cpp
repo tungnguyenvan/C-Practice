@@ -21,6 +21,9 @@ int main() {
 			cout << medicine_resistance << endl;
 			p.TakeMadicine(medicine_resistance);
 		}
+		else if (t == '0') {
+			p.TakeMadicine(0);
+		}
 	}
 
 	system("pause");

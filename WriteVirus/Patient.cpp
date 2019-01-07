@@ -7,8 +7,6 @@
 
 using namespace std;
 
-int resistanceVirus = 0;
-
 enum Reistance
 {
 	MIN_RESISTANCE = 1000,
@@ -44,7 +42,13 @@ int Patient::GetResistance() {
 }
 
 int Patient::GetTotalResistanceVirus() {
-	return resistanceVirus;
+	int totalResistance = 0;
+	list<Virus*>::iterator i = this->m_VirusList.begin();
+	while (i != this->m_VirusList.end()) {
+		totalResistance += (*i)->GetResistance();
+		i++;
+	}
+	return totalResistance;
 }
 
 void Patient::DoStart() {
@@ -57,7 +61,6 @@ void Patient::DoStart() {
 		if (rand() % 2 == 0)  virus = new FluVirus();
 		else virus = new DengueVirus();
 		this->m_VirusList.push_back(virus);
-		resistanceVirus += virus->GetResistance();
 	}
 }
 
@@ -66,7 +69,6 @@ void Patient::InitResistance() {
 }
 
 void Patient::TakeMadicine(int medicine_resistance) {
-	resistanceVirus = 0;
 	list<Virus*>::iterator i = this->m_VirusList.begin();
 	while (i != this->m_VirusList.end()) {
 		if ((*i)->ReduceResistance(medicine_resistance)) {
@@ -74,14 +76,17 @@ void Patient::TakeMadicine(int medicine_resistance) {
 			i = this->m_VirusList.erase(i);
 		}
 		else {
-			//this->m_VirusList.push_back((*i)->DoClone());
-			resistanceVirus += (*i)->GetResistance();
 			++i;
 		}
 	}
 
+	list<Virus*>::iterator listPosition = this->m_VirusList.begin();
+	int listSize = this->m_VirusList.size();
+	for (int i = 0; i < listSize; i++) {
+		this->m_VirusList.push_back((*listPosition)->DoClone());
+	}
 
-	if (resistanceVirus > this->m_resistance) this->DoDie();
+	if (GetTotalResistanceVirus() > this->m_resistance) this->DoDie();
 }
 
 void Patient::ReduceResistance(int medicine_resistance) {
@@ -89,6 +94,7 @@ void Patient::ReduceResistance(int medicine_resistance) {
 }
 
 void Patient::DoDie() {
+	cout << "Patient Die..." << endl;
 	this->m_state = DIE;
 	this->m_VirusList.clear();
 }

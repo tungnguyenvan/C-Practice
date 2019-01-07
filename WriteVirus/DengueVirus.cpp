@@ -12,10 +12,8 @@ DengueVirus::DengueVirus() {
 	DoBorn();
 }
 
-DengueVirus::DengueVirus(const DengueVirus &dengueVirus) {
-	for (int i = 0; i < 4; i++) {
-		m_protein[i] = dengueVirus.m_protein[i];
-	}
+DengueVirus::DengueVirus(const DengueVirus *dengueVirus) {
+	*this = *dengueVirus;
 }
 
 DengueVirus::~DengueVirus() {
@@ -33,7 +31,7 @@ void DengueVirus::DoBorn() {
 }
 
 DengueVirus *DengueVirus::DoClone() {
-	DengueVirus *virus = this;
+	DengueVirus *virus = new DengueVirus(this);
 	return virus;
 }
 

@@ -7,7 +7,7 @@ private:
 	char m_protein[4];
 public:
 	DengueVirus();
-	DengueVirus(const DengueVirus &dengueVirus);
+	DengueVirus(const DengueVirus *dengueVirus);
 	~DengueVirus();
 
 	bool ReduceResistance(int medicine_resistance) override;

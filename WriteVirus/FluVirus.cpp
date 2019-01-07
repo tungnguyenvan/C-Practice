@@ -16,8 +16,8 @@ FluVirus::~FluVirus() {
 
 }
 
-FluVirus::FluVirus(const FluVirus &fluvirus) {
-	
+FluVirus::FluVirus(const FluVirus *fluvirus) {
+	*this = *fluvirus;
 }
 
 bool FluVirus::ReduceResistance(int medicine_resistance) {
@@ -30,8 +30,8 @@ void FluVirus::DoBorn() {
 	InitResistance();
 }
 
-FluVirus *FluVirus::DoClone() {
-	FluVirus *virus = this;
+Virus *FluVirus::DoClone() {
+	Virus *virus = new FluVirus(this);
 	return virus;
 }
 
