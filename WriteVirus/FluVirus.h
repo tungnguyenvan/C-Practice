@@ -11,12 +11,13 @@ private :
 
 public:
 	FluVirus();
+	FluVirus(const FluVirus &fluVirus);
 	~FluVirus();
 
 	bool ReduceResistance(int medicine_resistance) override;
 	void DoBorn() override;
 	void DoDie() override;
-	void DoClone(list<Virus*> listVirus) override;
+	FluVirus *DoClone() override;
 	void InitResistance() override;
 };
 

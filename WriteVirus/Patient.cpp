@@ -69,8 +69,12 @@ void Patient::TakeMadicine(int medicine_resistance) {
 	resistanceVirus = 0;
 	list<Virus*>::iterator i = this->m_VirusList.begin();
 	while (i != this->m_VirusList.end()) {
-		if ((*i)->ReduceResistance(medicine_resistance)) i = this->m_VirusList.erase(i);
+		if ((*i)->ReduceResistance(medicine_resistance)) {
+			(*i)->DoDie();
+			i = this->m_VirusList.erase(i);
+		}
 		else {
+			//this->m_VirusList.push_back((*i)->DoClone());
 			resistanceVirus += (*i)->GetResistance();
 			++i;
 		}

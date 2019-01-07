@@ -10,7 +10,7 @@ const int MAX_LENG = 255;
 int lengthADN = 0;
 
 Virus::Virus() {
-	this->m_resistance = rand() % 30 + 1;
+	
 }
 
 Virus::~Virus() {
@@ -18,8 +18,8 @@ Virus::~Virus() {
 }
 
 Virus::Virus(const Virus &virus) {
-	this->m_dna = virus.m_dna;
-	this->m_resistance = virus.m_resistance;
+	m_dna = virus.m_dna;
+	m_resistance = virus.m_resistance;
 }
 
 int Virus::GetResistance() {

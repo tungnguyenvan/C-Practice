@@ -9,30 +9,36 @@ const bool DIE = true;
 const bool ALIVE = false;
 
 FluVirus::FluVirus() {
-
+	DoBorn();
 }
 
 FluVirus::~FluVirus() {
 
 }
 
+FluVirus::FluVirus(const FluVirus &fluvirus) {
+	
+}
+
 bool FluVirus::ReduceResistance(int medicine_resistance) {
-	cout << "Flu virus reduce" << endl;
+	if (Virus::GetResistance() > 0) Virus::SetResistance(Virus::GetResistance() - medicine_resistance);
+	if (Virus::GetResistance() < 0) return DIE;
 	return ALIVE;
 }
 
 void FluVirus::DoBorn() {
-	cout << "New Virus was born!" << endl;
+	InitResistance();
 }
 
-void FluVirus::DoClone(list<Virus*> listVirus) {
-
+FluVirus *FluVirus::DoClone() {
+	FluVirus *virus = this;
+	return virus;
 }
 
 void FluVirus::DoDie() {
-	cout << "is Die" << endl;
+	delete this;
 }
 
 void FluVirus::InitResistance() {
-
+	Virus::SetResistance(rand() % 30 + 1);
 }

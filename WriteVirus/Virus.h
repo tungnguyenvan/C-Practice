@@ -20,7 +20,7 @@ public:
 
 	virtual bool ReduceResistance(int medicine_resistance) = 0;
 	virtual void DoBorn() = 0;
-	virtual void DoClone(list<Virus*> listVirus) = 0;
+	virtual Virus *DoClone() = 0;
 	virtual void DoDie() = 0;
 	virtual void InitResistance() = 0;
 };
