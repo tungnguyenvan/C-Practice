@@ -11,13 +11,13 @@ private:
 
 public:
 	Virus();
-	~Virus();
 	Virus(const Virus &virus);
 
 	void LoadADNInformation();
 	int GetResistance();
 	void SetResistance(int m_resistance);
 
+	virtual ~Virus();
 	virtual bool ReduceResistance(int medicine_resistance) = 0;
 	virtual void DoBorn() = 0;
 	virtual Virus *DoClone() = 0;

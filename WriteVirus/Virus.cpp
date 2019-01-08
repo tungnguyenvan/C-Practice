@@ -1,3 +1,4 @@
+#include "vld.h"
 #include <iostream>
 #include "Virus.h"
 #include <string>

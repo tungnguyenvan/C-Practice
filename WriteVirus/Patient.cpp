@@ -1,3 +1,4 @@
+#include "vld.h"
 #include <iostream>
 #include <list>
 #include "Patient.h"
@@ -96,6 +97,11 @@ void Patient::ReduceResistance(int medicine_resistance) {
 void Patient::DoDie() {
 	cout << "Patient Die..." << endl;
 	this->m_state = DIE;
+
+	for (list<Virus*>::iterator i = this->m_VirusList.begin(); i != this->m_VirusList.end(); ++i) {
+		delete *i;
+	}
+
 	this->m_VirusList.clear();
 }
 
