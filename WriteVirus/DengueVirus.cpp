@@ -55,6 +55,7 @@ DengueVirus *DengueVirus::DoClone() {
 }
 
 void DengueVirus::DoDie() {
+	delete []this->m_protein;
 	delete this;
 }
 

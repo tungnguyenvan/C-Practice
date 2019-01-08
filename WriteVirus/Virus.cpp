@@ -15,7 +15,7 @@ Virus::Virus() {
 }
 
 Virus::~Virus() {
-
+	delete this->m_dna;
 }
 
 Virus::Virus(const Virus &virus) {
