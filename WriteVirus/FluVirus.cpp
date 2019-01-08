@@ -18,7 +18,7 @@ FluVirus::FluVirus() {
 }
 
 FluVirus::~FluVirus() {
-
+	
 }
 
 FluVirus::FluVirus(const FluVirus *fluvirus) : Virus(*fluvirus) {

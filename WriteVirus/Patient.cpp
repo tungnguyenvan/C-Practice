@@ -35,9 +35,9 @@ Patient::Patient() {
 }
 
 Patient::~Patient() {
-	this->m_state = DIE;
-	for (list<Virus*>::iterator i = this->m_VirusList.begin(); i != this->m_VirusList.end(); ++i) {
-		delete *i;
+	list<Virus*>::iterator i = this->m_VirusList.begin();
+	for (i; i != this->m_VirusList.end(); i++) {
+		delete (*i);
 	}
 	this->m_VirusList.clear();
 }
@@ -104,6 +104,7 @@ void Patient::ReduceResistance(int medicine_resistance) {
 }
 
 void Patient::DoDie() {
+	this->m_state = DIE;
 	cout << "Patient Die..." << endl;
 }
 

@@ -37,6 +37,7 @@ int main() {
 	}
 
 	delete p;
+
 	system("pause");
 	return 0;
 }

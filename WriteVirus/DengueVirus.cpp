@@ -24,7 +24,8 @@ DengueVirus::DengueVirus(const DengueVirus *dengueVirus) : Virus(*dengueVirus) {
 }
 
 DengueVirus::~DengueVirus() {
-
+	delete[]this->m_protein;
+	delete this;
 }
 
 bool DengueVirus::ReduceResistance(int medicine_resistance) {
