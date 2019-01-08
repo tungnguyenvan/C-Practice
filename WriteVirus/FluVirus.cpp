@@ -4,12 +4,16 @@
 #include "FluVirus.h"
 #include <list>
 
+#include <cstdlib>
+#include <ctime>
+
 using namespace std;
 
 const bool DIE = true;
 const bool ALIVE = false;
 
 FluVirus::FluVirus() {
+	srand(NULL);
 	DoBorn();
 }
 

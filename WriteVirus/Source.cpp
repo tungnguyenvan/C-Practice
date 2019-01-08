@@ -3,6 +3,9 @@
 #include <list>
 #include "Patient.h"
 
+#include <cstdlib>
+#include <ctime>
+
 using namespace std;
 
 int main() {
@@ -10,6 +13,7 @@ int main() {
 	char t = 0;
 	while (p.GetState() == 1)
 	{
+		srand(NULL);
 		system("cls");
 		if (p.GetListVirus().size() > 0) {
 			cout << "\n\ntotal virus: " << p.GetListVirus().size() << endl;

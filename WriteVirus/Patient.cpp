@@ -6,6 +6,9 @@
 #include "FluVirus.h"
 #include "DengueVirus.h"
 
+#include <cstdlib>
+#include <ctime>
+
 using namespace std;
 
 enum Reistance
@@ -27,6 +30,7 @@ enum LifePtient
 };
 
 Patient::Patient() {
+	srand(NULL);
 	DoStart();
 }
 
@@ -80,7 +84,6 @@ void Patient::TakeMadicine(int medicine_resistance) {
 			++i;
 		}
 	}
-
 	list<Virus*>::iterator listPosition = this->m_VirusList.begin();
 	int listSize = this->m_VirusList.size();
 	for (int i = 0; i < listSize; i++) {

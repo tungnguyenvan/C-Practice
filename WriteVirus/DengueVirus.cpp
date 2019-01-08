@@ -4,12 +4,16 @@
 #include <list>
 #include "Virus.h"
 
+#include <cstdlib>
+#include <ctime>
+
 using namespace std;
 
 const bool DIE = true;
 const bool ALIVE = false;
 
 DengueVirus::DengueVirus() {
+	srand(NULL);
 	DoBorn();
 }
 
