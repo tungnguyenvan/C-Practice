@@ -67,8 +67,8 @@ void Patient::DoStart() {
 	int maxVirus = rand() % (MAX_VIRUS - MIN_VIRUS + 1) + MIN_VIRUS;
 	Virus *virus;
 	for (int i = 0; i < maxVirus; i++) {
-		//if (rand() % 2 == 0)  virus = new FluVirus();
-		 virus = new DengueVirus();
+		if (rand() % 2 == 0)  virus = new FluVirus();
+		else virus = new DengueVirus();
 		this->m_VirusList.push_back(virus);
 	}
 }
