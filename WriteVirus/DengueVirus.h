@@ -4,7 +4,7 @@
 
 class DengueVirus : virtual public Virus {
 private:
-	char m_protein[4];
+	char *m_protein;
 public:
 	DengueVirus();
 	DengueVirus(const DengueVirus *dengueVirus);

@@ -15,9 +15,11 @@ const bool ALIVE = false;
 DengueVirus::DengueVirus() {
 	srand(NULL);
 	DoBorn();
+	cout << "this" << endl;
 }
 
 DengueVirus::DengueVirus(const DengueVirus *dengueVirus) : Virus(*dengueVirus) {
+	this->m_protein = new char[4];
 	for (int i = 0; i < 4; i++) {
 		this->m_protein[i] = dengueVirus->m_protein[i];
 	}
@@ -25,7 +27,6 @@ DengueVirus::DengueVirus(const DengueVirus *dengueVirus) : Virus(*dengueVirus) {
 
 DengueVirus::~DengueVirus() {
 	delete[]this->m_protein;
-	delete this;
 }
 
 bool DengueVirus::ReduceResistance(int medicine_resistance) {
@@ -39,6 +40,7 @@ void DengueVirus::DoBorn() {
 	int minProtein = 1;
 	int maxProtein = 3;
 	int randProtein = minProtein + rand() % (maxProtein - minProtein + 1);
+	this->m_protein = new char[4];
 	switch (randProtein) {
 	case 1:
 		this->m_protein[0] = 'N';
@@ -62,7 +64,6 @@ DengueVirus *DengueVirus::DoClone() {
 }
 
 void DengueVirus::DoDie() {
-	delete []this->m_protein;
 	delete this;
 }
 
