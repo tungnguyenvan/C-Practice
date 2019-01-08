@@ -17,8 +17,10 @@ DengueVirus::DengueVirus() {
 	DoBorn();
 }
 
-DengueVirus::DengueVirus(const DengueVirus *dengueVirus) {
-	*this = *dengueVirus;
+DengueVirus::DengueVirus(const DengueVirus *dengueVirus) : Virus(*dengueVirus) {
+	for (int i = 0; i < 4; i++) {
+		this->m_protein[i] = dengueVirus->m_protein[i];
+	}
 }
 
 DengueVirus::~DengueVirus() {
@@ -27,7 +29,7 @@ DengueVirus::~DengueVirus() {
 
 bool DengueVirus::ReduceResistance(int medicine_resistance) {
 	if (Virus::GetResistance() > 0) Virus::SetResistance(Virus::GetResistance() - medicine_resistance);
-	if (Virus::GetResistance() < 0) return DIE;
+	if (Virus::GetResistance() <= 0) return DIE;
 	return ALIVE;
 }
 

@@ -35,7 +35,11 @@ Patient::Patient() {
 }
 
 Patient::~Patient() {
-	cout << ":( Patient is Die :(" << endl;
+	this->m_state = DIE;
+	for (list<Virus*>::iterator i = this->m_VirusList.begin(); i != this->m_VirusList.end(); ++i) {
+		delete *i;
+	}
+	this->m_VirusList.clear();
 }
 
 list<Virus*> Patient::GetListVirus() {
@@ -84,10 +88,12 @@ void Patient::TakeMadicine(int medicine_resistance) {
 			++i;
 		}
 	}
+
 	list<Virus*>::iterator listPosition = this->m_VirusList.begin();
 	int listSize = this->m_VirusList.size();
 	for (int i = 0; i < listSize; i++) {
 		this->m_VirusList.push_back((*listPosition)->DoClone());
+		listPosition++;
 	}
 
 	if (GetTotalResistanceVirus() > this->m_resistance) this->DoDie();
@@ -99,13 +105,6 @@ void Patient::ReduceResistance(int medicine_resistance) {
 
 void Patient::DoDie() {
 	cout << "Patient Die..." << endl;
-	this->m_state = DIE;
-
-	for (list<Virus*>::iterator i = this->m_VirusList.begin(); i != this->m_VirusList.end(); ++i) {
-		delete *i;
-	}
-
-	this->m_VirusList.clear();
 }
 
 int Patient::GetState() {

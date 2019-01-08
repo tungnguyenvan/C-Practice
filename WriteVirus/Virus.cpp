@@ -11,15 +11,18 @@ const int MAX_LENG = 255;
 int lengthADN = 0;
 
 Virus::Virus() {
-	
+	LoadADNInformation();
 }
 
 Virus::~Virus() {
-	delete this->m_dna;
+	delete []this->m_dna;
 }
 
 Virus::Virus(const Virus &virus) {
-	m_dna = virus.m_dna;
+	m_dna = new char[255];
+	for (int i = 0; i < 255; i++) {
+		this->m_dna[i] = virus.m_dna[i];
+	}
 	m_resistance = virus.m_resistance;
 }
 
@@ -40,7 +43,8 @@ void Virus::LoadADNInformation() {
 	}
 
 	if (!file.eof()) {
-		file >> adn;
+		this->m_dna = new char[255];
+		file >> this->m_dna;
 	}
-	this->m_dna = const_cast<char*>(adn.c_str());
+	file.close();
 }

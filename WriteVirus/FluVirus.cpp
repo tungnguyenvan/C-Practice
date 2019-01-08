@@ -21,13 +21,13 @@ FluVirus::~FluVirus() {
 
 }
 
-FluVirus::FluVirus(const FluVirus *fluvirus) {
-	*this = *fluvirus;
+FluVirus::FluVirus(const FluVirus *fluvirus) : Virus(*fluvirus) {
+	this->m_color = fluvirus->m_color;
 }
 
 bool FluVirus::ReduceResistance(int medicine_resistance) {
 	if (Virus::GetResistance() > 0) Virus::SetResistance(Virus::GetResistance() - medicine_resistance);
-	if (Virus::GetResistance() < 0) return DIE;
+	if (Virus::GetResistance() <= 0) return DIE;
 	return ALIVE;
 }
 
